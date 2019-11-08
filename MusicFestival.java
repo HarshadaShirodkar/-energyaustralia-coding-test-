@@ -17,8 +17,21 @@ public class MusicFestival {
 	public static void main(String[] args) throws Exception {
 		   JSONParser jsonPaser = new JSONParser();
         try {
-        	
-        		
+        	//This code for getting the json from the url but commented below section *********
+		
+		/*
+			 * String inline= ""; URL url = new URL("URL"); HttpURLConnection conn =
+			 * (HttpURLConnection)url.openConnection(); conn.setRequestMethod("GET");
+			 * conn.connect(); int responsecode = conn.getResponseCode();
+			 * 
+			 * 
+			 * if(responsecode == 200) { Scanner sc = new Scanner(url.openStream());
+			 * 
+			 * while(sc.hasNext()) { inline+=sc.nextLine(); } System.out.println(inline);
+			 * sc.close(); } JSONObject jobj = (JSONObject)jsonPaser.parse(inline);
+			 */
+		
+		
         	if(new File("src/FestivalData.json").length()> 0 
         			&& new File("src/FestivalData.json").exists()) {        	
         		
@@ -32,10 +45,8 @@ public class MusicFestival {
 			  List<JSONObject> list = new ArrayList<JSONObject>(); 
 			  HashMap<Integer, String> sortedMap = new HashMap<Integer, String>();
 			  if(!musicFestArr.isEmpty()) {
-			  list.add((JSONObject) musicFestArr.get(0));
 			  
 			  
-			 
 			  for (int i = 0; i < musicFestArr.size(); i++) {
 				  JSONObject JSONObject = (org.json.simple.JSONObject) musicFestArr.get(i);
 				  String recordLabelname = (String) JSONObject.get("recordLabelname");
@@ -64,15 +75,9 @@ public class MusicFestival {
 						  sortedMap.put(k+2, str1.get(k)+"\n");;
 						  
 					  }
-
-					
-					  
 					  List<String> targetList = new ArrayList<>(sortedMap.values());
-					  
 					  System.out.println(targetList);
 					  }
-					  
-					  
 				  }
 				  }
 				}
@@ -93,6 +98,3 @@ public class MusicFestival {
 	
 	
 }
-
-
-
