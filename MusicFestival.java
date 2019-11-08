@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,10 +14,17 @@ import org.json.simple.parser.ParseException;
 
 public class MusicFestival {
 
-	public static void main(String[] args) throws ParseException {
+	public static void main(String[] args) throws Exception {
 		   JSONParser jsonPaser = new JSONParser();
         try {
-        	Object obj = jsonPaser.parse(new FileReader("src/FestivalData.json"));
+        	
+        		
+        	if(new File("src/FestivalData.json").length()> 0 
+        			&& new File("src/FestivalData.json").exists()) {        	
+        		
+        		Object obj = jsonPaser.parse(new FileReader("src/FestivalData.json"));
+        	if(obj != null && !obj.equals(null)) {
+        	
         	
         	 JSONObject jsonObject= (JSONObject) obj;
         	 JSONArray musicFestArr=  (JSONArray) jsonObject.get("musicFestival");
@@ -69,11 +77,14 @@ public class MusicFestival {
 				  }
 				}
 			  }
-			  
+        	}
         }
+        	}
             catch (FileNotFoundException e) {
-	            e.printStackTrace();
+            	e.printStackTrace();
 	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }catch (ParseException e) {
 	            e.printStackTrace();
 	        }
 	}
