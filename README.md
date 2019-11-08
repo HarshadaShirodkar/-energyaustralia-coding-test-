@@ -8,6 +8,6 @@
 
 # JSON File consists of RecordLabelName, Bands array, band name and festival name.
 
-# Sorted festival names aplhabetically, and printed on the console.
+# Sorted festival names alphabetically, and printed on the console.
 
 # Tried two and three modified json to test the code.
